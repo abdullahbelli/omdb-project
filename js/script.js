@@ -1,4 +1,4 @@
-const API_BASE_URL = "";
+const API_BASE_URL = "https://omdb-project-three.vercel.app";
 
 const searchForm = document.getElementById("searchForm");
 const movieInput = document.getElementById("movieInput");
