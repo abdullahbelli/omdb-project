@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>OMDB Movie Search</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="hero">
+        <div class="hero-content">
+          <p class="subtitle">OMDB Movie Search Project</p>
+          <h1>Find movies, series and details instantly.</h1>
+          <p class="description">
+            Search for any movie title and view information such as release
+            year, genre, director, IMDb rating, actors and plot.
+          </p>
+
+          <form id="searchForm" class="search-box">
+            <input
+              type="text"
+              id="movieInput"
+              placeholder="Search a movie, for example: Batman"
+              autocomplete="off"
+            />
+            <button type="submit">Search</button>
+          </form>
+
+          <p id="message" class="message"></p>
+        </div>
+      </section>
+
+      <section id="result" class="result hidden">
+        <div class="poster-wrapper">
+          <img id="moviePoster" src="" alt="Movie poster" />
+        </div>
+
+        <div class="movie-info">
+          <div class="movie-header">
+            <div>
+              <h2 id="movieTitle"></h2>
+              <p id="movieMeta"></p>
+            </div>
+
+            <span id="movieRating" class="rating"></span>
+          </div>
+
+          <p id="moviePlot" class="plot"></p>
+
+          <div class="details-grid">
+            <div>
+              <span>Genre</span>
+              <p id="movieGenre"></p>
+            </div>
+
+            <div>
+              <span>Director</span>
+              <p id="movieDirector"></p>
+            </div>
+
+            <div>
+              <span>Actors</span>
+              <p id="movieActors"></p>
+            </div>
+
+            <div>
+              <span>Language</span>
+              <p id="movieLanguage"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
