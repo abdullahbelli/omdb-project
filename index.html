@@ -20,12 +20,17 @@
           </p>
 
           <form id="searchForm" class="search-box">
-            <input
-              type="text"
-              id="movieInput"
-              placeholder="Search a movie, for example: Batman"
-              autocomplete="off"
-            />
+            <div class="input-area">
+              <input
+                type="text"
+                id="movieInput"
+                placeholder="Search a movie"
+                autocomplete="off"
+              />
+
+              <div id="suggestions" class="suggestions hidden"></div>
+            </div>
+
             <button type="submit">Search</button>
           </form>
 

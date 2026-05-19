@@ -7,70 +7,68 @@
 body {
   min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
-  background: #111827;
-  color: #f9fafb;
+  background: #f3f4f6;
+  color: #222;
 }
 
 .app {
-  width: min(1100px, 92%);
+  width: min(900px, 92%);
   margin: 0 auto;
-  padding: 48px 0;
+  padding: 40px 0;
 }
 
 .hero {
-  background: linear-gradient(135deg, #1f2937, #111827);
-  border: 1px solid #374151;
-  border-radius: 24px;
-  padding: 48px;
-  margin-bottom: 32px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
-}
-
-.hero-content {
-  max-width: 760px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 32px;
+  margin-bottom: 24px;
 }
 
 .subtitle {
-  color: #60a5fa;
-  font-weight: 700;
-  margin-bottom: 12px;
-  letter-spacing: 0.5px;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 h1 {
-  font-size: clamp(36px, 6vw, 64px);
-  line-height: 1.05;
-  margin-bottom: 18px;
+  font-size: 34px;
+  line-height: 1.2;
+  margin-bottom: 12px;
 }
 
 .description {
-  color: #d1d5db;
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 28px;
+  color: #555;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 24px;
 }
 
 .search-box {
   display: flex;
-  gap: 12px;
-  background: #030712;
-  border: 1px solid #374151;
-  border-radius: 16px;
-  padding: 10px;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.input-area {
+  position: relative;
+  flex: 1;
 }
 
 .search-box input {
-  flex: 1;
-  border: none;
+  width: 100%;
+  border: 1px solid #bbb;
   outline: none;
-  background: transparent;
-  color: #f9fafb;
-  font-size: 16px;
-  padding: 14px;
+  background: #fff;
+  color: #222;
+  font-size: 15px;
+  padding: 12px;
+  border-radius: 6px;
 }
 
-.search-box input::placeholder {
-  color: #9ca3af;
+.search-box input:focus {
+  border-color: #2563eb;
 }
 
 .search-box button {
@@ -78,32 +76,77 @@ h1 {
   cursor: pointer;
   background: #2563eb;
   color: #ffffff;
-  font-size: 16px;
-  font-weight: 700;
-  padding: 0 28px;
-  border-radius: 12px;
-  transition: 0.2s;
+  font-size: 15px;
+  padding: 12px 22px;
+  border-radius: 6px;
 }
 
 .search-box button:hover {
   background: #1d4ed8;
 }
 
+.suggestions {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  max-height: 260px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.suggestion-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background: #f3f4f6;
+}
+
+.suggestion-item img {
+  width: 38px;
+  height: 55px;
+  object-fit: cover;
+  background: #e5e7eb;
+}
+
+.suggestion-text strong {
+  display: block;
+  font-size: 14px;
+}
+
+.suggestion-text span {
+  color: #666;
+  font-size: 13px;
+}
+
 .message {
-  margin-top: 16px;
-  color: #fbbf24;
-  min-height: 24px;
+  margin-top: 12px;
+  color: #b45309;
+  min-height: 22px;
+  font-size: 14px;
 }
 
 .result {
   display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 32px;
-  background: #1f2937;
-  border: 1px solid #374151;
-  border-radius: 24px;
-  padding: 28px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  grid-template-columns: 230px 1fr;
+  gap: 24px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 24px;
 }
 
 .hidden {
@@ -112,93 +155,82 @@ h1 {
 
 .poster-wrapper {
   width: 100%;
-  border-radius: 18px;
+  background: #e5e7eb;
+  border-radius: 8px;
   overflow: hidden;
-  background: #030712;
 }
 
 .poster-wrapper img {
   width: 100%;
-  height: 100%;
-  min-height: 440px;
-  object-fit: cover;
   display: block;
-}
-
-.movie-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .movie-header {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
-  align-items: flex-start;
-  margin-bottom: 20px;
+  gap: 16px;
+  margin-bottom: 14px;
 }
 
 .movie-header h2 {
-  font-size: 36px;
-  margin-bottom: 8px;
+  font-size: 28px;
+  margin-bottom: 6px;
 }
 
 #movieMeta {
-  color: #9ca3af;
-  font-size: 16px;
+  color: #666;
+  font-size: 14px;
 }
 
 .rating {
-  background: #fbbf24;
-  color: #111827;
-  font-weight: 800;
-  padding: 10px 14px;
-  border-radius: 999px;
+  background: #facc15;
+  color: #222;
+  font-weight: bold;
+  padding: 8px 10px;
+  border-radius: 6px;
   white-space: nowrap;
+  height: fit-content;
 }
 
 .plot {
-  color: #d1d5db;
-  line-height: 1.7;
-  margin-bottom: 28px;
-  font-size: 17px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
 .details-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 12px;
 }
 
 .details-grid div {
-  background: #111827;
-  border: 1px solid #374151;
-  border-radius: 16px;
-  padding: 18px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px;
 }
 
 .details-grid span {
   display: block;
-  color: #60a5fa;
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 8px;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 6px;
 }
 
 .details-grid p {
-  color: #f9fafb;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
-@media (max-width: 768px) {
-  .app {
-    width: 94%;
-    padding: 24px 0;
+@media (max-width: 700px) {
+  .hero {
+    padding: 24px;
   }
 
-  .hero {
-    padding: 28px;
+  h1 {
+    font-size: 28px;
   }
 
   .search-box {
@@ -206,27 +238,41 @@ h1 {
   }
 
   .search-box button {
-    padding: 14px;
+    width: 100%;
   }
 
   .result {
     grid-template-columns: 1fr;
-    padding: 20px;
-  }
-
-  .poster-wrapper img {
-    min-height: auto;
-  }
-
-  .movie-header {
-    flex-direction: column;
-  }
-
-  .movie-header h2 {
-    font-size: 28px;
   }
 
   .details-grid {
     grid-template-columns: 1fr;
   }
+
+  .movie-header {
+    flex-direction: column;
+  }
+}
+
+.suggestion-empty {
+  padding: 12px;
+  color: #666;
+  font-size: 14px;
+}
+
+.suggestion-text mark {
+  background: #fde68a;
+  color: #222;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+
+.suggestions {
+  position: static;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  max-height: 260px;
+  overflow-y: auto;
+  margin-top: 4px;
 }
