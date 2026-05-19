@@ -1,4 +1,4 @@
-const API_KEY = "aee49c3f";
+const API_BASE_URL = "";
 
 const searchForm = document.getElementById("searchForm");
 const movieInput = document.getElementById("movieInput");
@@ -82,16 +82,16 @@ async function getSuggestions(query) {
 
 async function fetchSuggestions(query) {
   const response = await fetch(
-    `https://www.omdbapi.com/?s=${encodeURIComponent(query)}&apikey=${API_KEY}`
+    `${API_BASE_URL}/api/search?q=${encodeURIComponent(query)}`
   );
 
   const data = await response.json();
 
-  if (data.Response === "False" || !data.Search) {
+  if (!data.success || !data.movies) {
     return [];
   }
 
-  return prepareSuggestions(data.Search, query);
+  return prepareSuggestions(data.movies, query);
 }
 
 function prepareSuggestions(movies, query) {
@@ -187,18 +187,18 @@ async function searchMovie(movieName) {
 
   try {
     const response = await fetch(
-      `https://www.omdbapi.com/?t=${encodeURIComponent(movieName)}&apikey=${API_KEY}`
+      `${API_BASE_URL}/api/movie?title=${encodeURIComponent(movieName)}`
     );
 
     const data = await response.json();
 
-    if (data.Response === "False") {
-      showMessage(data.Error || "Movie not found.");
+    if (!data.success) {
+      showMessage(data.message || "Movie not found.");
       hideResult();
       return;
     }
 
-    showMovie(data);
+    showMovie(data.movie);
     localStorage.setItem("lastMovieSearch", movieName);
     showMessage("");
   } catch (error) {
@@ -213,19 +213,19 @@ async function searchMovieById(imdbID) {
 
   try {
     const response = await fetch(
-      `https://www.omdbapi.com/?i=${imdbID}&apikey=${API_KEY}`
+      `${API_BASE_URL}/api/movie?id=${encodeURIComponent(imdbID)}`
     );
 
     const data = await response.json();
 
-    if (data.Response === "False") {
-      showMessage(data.Error || "Movie not found.");
+    if (!data.success) {
+      showMessage(data.message || "Movie not found.");
       hideResult();
       return;
     }
 
-    showMovie(data);
-    localStorage.setItem("lastMovieSearch", data.Title);
+    showMovie(data.movie);
+    localStorage.setItem("lastMovieSearch", data.movie.Title);
     showMessage("");
   } catch (error) {
     showMessage("Something went wrong. Please try again later.");
